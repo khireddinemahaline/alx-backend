@@ -1,3 +1,8 @@
+#!/usr/bin/env python3
+"""
+return the data in the csv file in a paginated way
+"""
+
 import csv
 import math
 from typing import List

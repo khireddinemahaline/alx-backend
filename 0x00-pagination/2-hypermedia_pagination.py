@@ -1,3 +1,9 @@
+#!/usr/bin/env python3
+"""
+return dectionary with the following key-value pairs
+    {page_size: int, page: int, data: List, next_page: int,
+    prev_page: int, total_pages: int}
+"""
 import csv
 import math
 from typing import List
@@ -39,10 +45,10 @@ class Server:
         - prev_page: number of the previous page, None if no previous page
         - total_pages: the total number of pages in the dataset as an integer
         """
-        data = self.get_page(page, page_size)
-        total_pages = math.ceil(len(self.dataset()) / page_size)
-        next_page = page + 1 if page + 1 < total_pages else None
-        prev_page = page - 1 if page > 1 else None
+        data: List = self.get_page(page, page_size)
+        total_pages: int = math.ceil(len(self.dataset()) / page_size)
+        next_page: int = page + 1 if page + 1 < total_pages else None
+        prev_page: int = page - 1 if page > 1 else None
         return {
             "page_size": len(data),
             "page": page,
