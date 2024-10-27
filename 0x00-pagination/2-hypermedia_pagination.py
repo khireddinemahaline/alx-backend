@@ -32,8 +32,8 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         assert isinstance(page, int) and isinstance(page_size, int)
         assert page > 0 and page_size > 0
-        start: int = index_range(page, page_size)[0]
-        end: int = index_range(page, page_size)[1]
+        start = index_range(page, page_size)[0]
+        end = index_range(page, page_size)[1]
         return self.dataset()[start:end]
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
@@ -46,9 +46,9 @@ class Server:
         - total_pages: the total number of pages in the dataset as an integer
         """
         data: List = self.get_page(page, page_size)
-        total_pages: int = math.ceil(len(self.dataset()) / page_size)
-        next_page: int = page + 1 if page + 1 < total_pages else None
-        prev_page: int = page - 1 if page > 1 else None
+        total_pages = math.ceil(len(self.dataset()) / page_size)
+        next_page = page + 1 if page + 1 < total_pages else None
+        prev_page = page - 1 if page > 1 else None
         return {
             "page_size": len(data),
             "page": page,
