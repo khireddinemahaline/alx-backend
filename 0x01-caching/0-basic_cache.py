@@ -3,6 +3,7 @@
       - caching system
 """
 
+
 BaseCaching = __import__('base_caching').BaseCaching
 
 
@@ -14,8 +15,10 @@ class BasicCache(BaseCaching):
         """
         Add an item in the cache
         """
-        if key and item:
-            self.cache_data[key] = item
+        if key is None or item is None:
+            return
+        self.cache_data[key] = item
+        
     def get(self, key):
         if key in self.cache_data and key:
             return self.cache_data[key]
